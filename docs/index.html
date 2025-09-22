@@ -1,1 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zara Razlan - Data Scientist</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            color: #5d4e37;
+            background: linear-gradient(135deg, #f5f1eb 0%, #e8ddd4 30%, #d4c4b0 70%, #c9b299 100%);
+            min-height: 100vh;
+        }
+        
+        /* Subtle animated elements */
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .shape-1 {
+            top: 10%;
+            left: 10%;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, #c9b299, transparent);
+            border-radius: 50%;
+            animation-delay: 0s;
+        }
+        
+        .shape-2 {
+            top: 60%;
+            right: 15%;
+            width: 150px;
+            height: 80px;
+            background: linear-gradient(45deg, #d4c4b0, transparent);
+            border-radius: 50% 20%;
+            animation-delay: 2s;
+        }
+        
+        .shape-3 {
+            bottom: 20%;
+            left: 20%;
+            width: 120px;
+            height: 120px;
+            background: conic-gradient(from 45deg, #e8ddd4, transparent, #d4c4b0);
+            border-radius: 30% 70% 20% 80%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-15px) rotate(5deg); }
+            66% { transform: translateY(10px) rotate(-3deg); }
+        }
+        
+        /* Main container with sophisticated design */
+        .main-container {
+            backdrop-filter: blur(20px);
+            background: rgba(245, 241, 235, 0.85);
+            margin: 20px;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 
+                0 25px 50px rgba(93, 78, 55, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(212, 196, 176, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Elegant navigation */
+        nav {
+            background: rgba(248, 244, 238, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 25px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(212, 196, 176, 0.2);
+        }
+        
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 300;
+            color: #8b7355;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+            position: relative;
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #c9b299;
+            transition: width 0.3s ease;
+        }
+        
+        .logo:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .nav-links a {
+            color: #8b7355;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.95rem;
+            padding: 12px 20px;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+            letter-spacing: 0.02em;
+        }
+        
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            background: rgba(201, 178, 153, 0.2);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+        
+        .nav-links a:hover::before {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: #6b5b42;
+            transform: translateY(-2px);
+        }
+        
+        /* Sophisticated hero section */
+        .hero {
+            text-align: center;
+            padding: 120px 40px;
+            background: 
+                radial-gradient(circle at 30% 20%, rgba(232, 221, 212, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(212, 196, 176, 0.2) 0%, transparent 50%),
+                rgba(248, 244, 238, 0.6);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(45deg, transparent 30%, rgba(201, 178, 153, 0.05) 50%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .profile-section {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .profile-img {
+                width: 250px;
+                height: 250px;
+            border-radius: 50%;
+            margin: 0 auto 40px;
+            display: block;
+            border: 3px solid rgba(201, 178, 153, 0.3);
+            box-shadow: 
+                0 20px 40px rgba(93, 78, 55, 0.2),
+                inset 0 2px 4px rgba(255, 255, 255, 0.3);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .profile-img::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: conic-gradient(from 0deg, #c9b299, #d4c4b0, #e8ddd4, #c9b299);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+        
+        .profile-img:hover::before {
+            opacity: 0.3;
+        }
+        
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: #6b5b42;
+            font-weight: 200;
+            letter-spacing: -0.03em;
+            position: relative;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #c9b299, #d4c4b0, #c9b299);
+            border-radius: 1px;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: #8b7355;
+            margin-bottom: 50px;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-btn {
+            background: rgba(201, 178, 153, 0.9);
+            color: #f8f4ee;
+            text-decoration: none;
+            font-weight: 400;
+            padding: 16px 32px;
+            border-radius: 30px;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(93, 78, 55, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            backdrop-filter: blur(10px);
+        }
+        
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(93, 78, 55, 0.25);
+            background: rgba(180, 155, 138, 0.95);
+        }
+        
+        .contact-btn.secondary {
+            background: rgba(248, 244, 238, 0.9);
+            color: #8b7355;
+            border: 1px solid rgba(201, 178, 153, 0.4);
+        }
+        
+        .contact-btn.secondary:hover {
+            background: rgba(201, 178, 153, 0.9);
+            color: #f8f4ee;
+            border-color: transparent;
+        }
+        
+        /* Refined section styling */
+        .section {
+            background: rgba(248, 244, 238, 0.8);
+            backdrop-filter: blur(20px);
+            margin: 40px 40px;
+            padding: 70px 50px;
+            border-radius: 28px;
+            box-shadow: 
+                0 15px 35px rgba(93, 78, 55, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(212, 196, 176, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #c9b299 0%, #d4c4b0 50%, #c9b299 100%);
+            opacity: 0.6;
+        }
+        
+        .section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 50px;
+            color: #6b5b42;
+            font-weight: 200;
+            text-align: center;
+            position: relative;
+            letter-spacing: -0.02em;
+        }
+        
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #c9b299, transparent);
+        }
+        
+        /* Elegant about section */
+        .about-text {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #5d4e37;
+            text-align: justify;
+            columns: 2;
+            column-gap: 60px;
+            column-rule: 1px solid rgba(201, 178, 153, 0.3);
+        }
+        
+        .about-text p {
+            margin-bottom: 25px;
+            break-inside: avoid;
+            text-indent: 1.5em;
+        }
+        
+        .about-text p:first-child {
+            text-indent: 0;
+        }
+        
+        /* Sophisticated experience cards */
+        .experience-item {
+            background: 
+                linear-gradient(135deg, rgba(248, 244, 238, 0.6), rgba(240, 235, 229, 0.4)),
+                rgba(255, 255, 255, 0.1);
+            margin-bottom: 35px;
+            padding: 40px;
+            border-radius: 24px;
+            border-left: 4px solid #c9b299;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(201, 178, 153, 0.1), rgba(212, 196, 176, 0.08));
+            transition: width 0.4s ease;
+        }
+        
+        .experience-item:hover {
+            transform: translateX(15px);
+            box-shadow: 0 20px 40px rgba(93, 78, 55, 0.15);
+        }
+        
+        .experience-item:hover::before {
+            width: 100%;
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .job-title {
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: #6b5b42;
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+        }
+        
+        .job-company {
+            font-size: 1.2rem;
+            color: #8b7355;
+            font-weight: 300;
+            font-style: italic;
+        }
+        
+        .job-date {
+            background: rgba(201, 178, 153, 0.2);
+            color: #6b5b42;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 400;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(201, 178, 153, 0.3);
+        }
+        
+        .job-description {
+            margin-top: 25px;
+            color: #5d4e37;
+            line-height: 1.8;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .job-description ul {
+            margin-left: 0;
+            list-style: none;
+        }
+        
+        .job-description li {
+            margin-bottom: 15px;
+            padding-left: 35px;
+            position: relative;
+        }
+        
+        .job-description li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, #c9b299, #d4c4b0);
+            border-radius: 50%;
+        }
+        
+        /* Unique project cards */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 35px;
+        }
+        
+        .project-card {
+            background: 
+                linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(248, 244, 238, 0.2)),
+                rgba(240, 235, 229, 0.3);
+            backdrop-filter: blur(20px);
+            border-radius: 28px;
+            padding: 40px;
+            border: 1px solid rgba(201, 178, 153, 0.2);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: -100px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(201, 178, 153, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 25px 50px rgba(93, 78, 55, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+        
+        .project-card:hover::before {
+            opacity: 1;
+            top: -50px;
+            left: -50px;
+        }
+        
+        .project-title {
+            font-size: 1.7rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            color: #6b5b42;
+            position: relative;
+            z-index: 2;
+            letter-spacing: -0.01em;
+        }
+        
+        .project-description {
+            color: #5d4e37;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .project-link {
+            background: rgba(201, 178, 153, 0.9);
+            color: #f8f4ee;
+            text-decoration: none;
+            font-weight: 400;
+            padding: 12px 24px;
+            border-radius: 25px;
+            transition: all 0.4s ease;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .project-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(93, 78, 55, 0.2);
+            background: rgba(180, 155, 138, 0.95);
+        }
+        
+        .project-link.secondary {
+            background: transparent;
+            color: #8b7355;
+            border: 1px solid rgba(201, 178, 153, 0.4);
+        }
+        
+        .project-link.secondary:hover {
+            background: rgba(201, 178, 153, 0.2);
+            border-color: rgba(201, 178, 153, 0.6);
+        }
+        
+        /* Refined skills section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+        
+        .skill-category {
+            background: 
+                linear-gradient(135deg, rgba(248, 244, 238, 0.6), rgba(240, 235, 229, 0.3)),
+                rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            padding: 35px;
+            border-radius: 24px;
+            border: 1px solid rgba(201, 178, 153, 0.2);
+            transition: all 0.4s ease;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(93, 78, 55, 0.15);
+        }
+        
+        .skill-category h3 {
+            color: #6b5b42;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: -0.01em;
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li {
+            background: rgba(248, 244, 238, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 14px 20px;
+            margin-bottom: 12px;
+            border-radius: 16px;
+            color: #5d4e37;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(201, 178, 153, 0.2);
+        }
+        
+        .skill-list li:hover {
+            background: rgba(201, 178, 153, 0.3);
+            transform: translateX(8px);
+            color: #4a3d2a;
+        }
+        
+        /* Elegant footer */
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            color: rgba(107, 91, 66, 0.7);
+            font-size: 0.95rem;
+            background: rgba(240, 235, 229, 0.3);
+            backdrop-filter: blur(20px);
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .main-container {
+                margin: 10px;
+            }
+            
+            .nav-content {
+                flex-direction: column;
+                gap: 25px;
+                padding: 0 20px;
+            }
+            
+            .nav-links {
+                gap: 20px;
+            }
+            
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            .about-text {
+                columns: 1;
+                column-gap: 0;
+            }
+            
+            .job-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section {
+                margin: 25px 15px;
+                padding: 40px 25px;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+        }
+        /* SUPER FUN Languages Globe Section */
+.languages-showcase {
+    grid-column: 1 / -1;
+    margin-top: 60px;
+    padding: 50px;
+    background: 
+        radial-gradient(circle at 50% 20%, rgba(232, 221, 212, 0.3) 0%, transparent 70%),
+        linear-gradient(135deg, rgba(248, 244, 238, 0.6), rgba(240, 235, 229, 0.4));
+    border-radius: 32px;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(201, 178, 153, 0.3);
+    position: relative;
+    overflow: hidden;
+}
 
+.languages-globe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 40px 0 50px;
+    position: relative;
+}
+
+.language-bubble {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(248, 244, 238, 0.6));
+    border-radius: 50%;
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(201, 178, 153, 0.3);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(93, 78, 55, 0.1);
+}
+
+.language-bubble:hover {
+    transform: translateY(-10px) scale(1.1);
+    box-shadow: 0 20px 40px rgba(93, 78, 55, 0.2);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 244, 238, 0.8));
+}
+
+.flag {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+    transition: transform 0.3s ease;
+}
+
+.language-bubble:hover .flag {
+    transform: scale(1.2) rotate(10deg);
+}
+
+.lang-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #6b5b42;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+.language-bubble:hover .lang-name {
+    color: #4a3d2a;
+}
+
+/* Proficiency Ring Animation */
+.proficiency-ring {
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: 126px;
+    height: 126px;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 0deg,
+        #c9b299 0deg,
+        #c9b299 calc(var(--fill) * 3.6deg),
+        rgba(201, 178, 153, 0.2) calc(var(--fill) * 3.6deg),
+        rgba(201, 178, 153, 0.2) 360deg
+    );
+    z-index: -1;
+    transition: all 0.5s ease;
+}
+
+.language-bubble:hover .proficiency-ring {
+    background: conic-gradient(
+        from 0deg,
+        #8b7355 0deg,
+        #8b7355 calc(var(--fill) * 3.6deg),
+        rgba(139, 115, 85, 0.3) calc(var(--fill) * 3.6deg),
+        rgba(139, 115, 85, 0.3) 360deg
+    );
+    transform: rotate(10deg);
+}
+
+/* Different colors for proficiency levels */
+.native .proficiency-ring {
+    background: conic-gradient(from 0deg, #2d8f2d 0deg, #2d8f2d calc(var(--fill) * 3.6deg), rgba(45, 143, 45, 0.2) calc(var(--fill) * 3.6deg));
+}
+
+.fluent .proficiency-ring {
+    background: conic-gradient(from 0deg, #1e7b1e 0deg, #1e7b1e calc(var(--fill) * 3.6deg), rgba(30, 123, 30, 0.2) calc(var(--fill) * 3.6deg));
+}
+
+.intermediate .proficiency-ring {
+    background: conic-gradient(from 0deg, #d4a843 0deg, #d4a843 calc(var(--fill) * 3.6deg), rgba(212, 168, 67, 0.2) calc(var(--fill) * 3.6deg));
+}
+
+.basic .proficiency-ring {
+    background: conic-gradient(from 0deg, #c67c4e 0deg, #c67c4e calc(var(--fill) * 3.6deg), rgba(198, 124, 78, 0.2) calc(var(--fill) * 3.6deg));
+}
+
+/* Fun Stats Section */
+.language-stats {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+}
+
+.stat-number {
+    display: block;
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #6b5b42, #8b7355);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: #8b7355;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Tooltip effect */
+.language-bubble::before {
+    content: attr(data-level);
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(107, 91, 66, 0.9);
+    color: #f8f4ee;
+    padding: 8px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.language-bubble:hover::before {
+    opacity: 1;
+}
+    </style>
+</head>
+<body>
+    <!-- Floating geometric shapes -->
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>/Users/zarayuhanarazlan/Downloads/zaraprofilephoto.jpg
+    </div>
+
+    <div class="main-container">
+        <nav>
+            <div class="nav-content">
+                <a href="#" class="logo">Zara Razlan</a>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#skills">Skills</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="hero">
+            <div class="profile-section">
+                <img src="zaraprofilephoto.jpg" alt="Zara Razlan" class="profile-img">
+                <h1>Zara Razlan</h1>
+                <p class="subtitle">Aspiring Machine Learning Engineer</p>
+                <div class="contact-info">
+                    <!-- Primary buttons - these will stand out -->
+                    <a href="mailto:spmzara@gmail.com" class="contact-btn">
+                        <i class="fas fa-envelope"></i> Get In Touch
+                    </a>
+                    <a href="https://github.com/zararzln" class="contact-btn">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="https://linkedin.com/in/zara-razlan" class="contact-btn">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                </div>
+                
+                <!-- Secondary buttons row - smaller and less prominent -->
+                <div class="secondary-contact" style="display: flex; justify-content: center; gap: 15px; margin-top: 25px; flex-wrap: wrap;">
+                    <a href="https://www.instagram.com/zararzln/?hl=en" class="contact-btn secondary" style="font-size: 0.85rem; padding: 10px 18px;">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    <a href="https://www.tiktok.com/@zararzln" class="contact-btn secondary" style="font-size: 0.85rem; padding: 10px 18px;">
+                        <i class="fab fa-tiktok"></i> TikTok
+                    </a>
+                    <a href="/resume.pdf" class="contact-btn secondary" style="font-size: 0.85rem; padding: 10px 18px;">
+                        <i class="fas fa-download"></i> Resume
+                    </a>
+                </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <section id="about" class="section">
+            <h2>About Me</h2>
+            <div class="about-text">
+                <p>🚀 From Malaysia to Norway's fjords, my data science journey started with one question: "What if machines could predict the future?" Now, pursuing my BSc at Handelshøyskolen BI in Oslo, I'm living that dream, transforming data chaos into crystal-clear business strategies.</p>
+                
+                <p>💡 I turn complex datasets into game-changing insights. Whether it's building AI that prevents equipment failures, creating Norway's renewable energy optimization system, or crafting algorithms for TikTok's infrastructure, I solve real problems with cutting-edge tech.</p>
+                
+                <p>🌍 When I'm not coding in Python or teaching fellow students, I'm exploring Oslo's innovation scene or building sustainable solutions. Fluent in four languages and thinking globally, I bring a unique multicultural lens to every data challenge I tackle.</p>
+            </div>
+        </div>
+
+        <section id="experience" class="section">
+            <h2>Professional Journey</h2>
+            
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Datacentre Engineer Intern</div>
+                        <div class="job-company">TikTok</div>
+                    </div>
+                    <div class="job-date">June 2025 - Present</div>
+                </div>
+                <div class="job-description">
+                    <ul>
+                        <li>Ensured uptime for critical infrastructure by implementing proactive hardware fault diagnosis and rapid component replacement protocols</li>
+                        <li>Successfully managed equipment installation and testing in high-stakes live data centre environments.</li>
+                        <li>Developed and executed system monitoring workflows while maintaining full compliance standards</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Data Analyst Intern</div>
+                        <div class="job-company">ANTIDIET</div>
+                    </div>
+                    <div class="job-date">Feb 2024 - April 2024</div>
+                </div>
+                <div class="job-description">
+                    <ul>
+                        <li>Revolutionized data processing workflows by implementing automated fetching and scheduling systems, reducing manual processing time </li>
+                        <li>Optimized API performance through strategic call restructuring, improving system efficiency and reducing unnecessary requests </li>
+                        <li>Established comprehensive data quality assurance protocols, ensuring accuracy and visualization consistency across all business reports</li>
+                        <li>Created interactive dashboards that provided real-time business insights, directly contributing to strategic decision-making</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Python & Data Science Tutor</div>
+                        <div class="job-company">Handelshøyskolen BI</div>
+                    </div>
+                    <div class="job-date">October 2024 - Present</div>
+                </div>
+                <div class="job-description">
+                    <ul>
+                        <li>Mentoring students in advanced Python programming, Pandas data manipulation and statistical analysis techniques</li>
+                        <li>Developed comprehensive learning materials and hands-on exercises that improved student performance </li>
+                        <li>Specialized in translating complex data science concepts into accessible, practical knowledge for business applications</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3 class="project-title">Predictive Maintenance AI System</h3>
+                    <p class="project-description">
+                        Built an intelligent predictive maintenance system using advanced machine learning techniques. 
+                        Implemented Random Forest Classifier with 94% accuracy for equipment failure prediction, 
+                        enabling proactive maintenance scheduling that reduced unexpected downtime.
+                    </p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                        <a href="#" class="project-link secondary">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">Smart Energy Optimization for Norway</h3>
+                    <p class="project-description">
+                        Engineered a comprehensive renewable energy prediction system specifically tailored for Norway's unique climate. 
+                        Created advanced feature engineering including cumulative precipitation metrics, wind power potential calculations, 
+                        and solar radiation indices. 
+                    </p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i class="fab fa-github"></i> Explore Code
+                        </a>
+                        <a href="#" class="project-link secondary">
+                            <i class="fas fa-chart-line"></i> View Results
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3 class="project-title">🔒 Norwegian Banking Security Intelligence Platform</h3>
+                    <p class="project-description">
+                        Developed an advanced security intelligence platform that analyzes mobile app protection effectiveness across the entire Norwegian banking sector. 
+                        Built an automated testing framework that evaluates 25+ banking apps, detects security solutions like Promon SHIELD, tests bypass techniques, 
+                        and generates comprehensive threat assessment reports with an interactive Streamlit dashboard. This project demonstrates expertise in cybersecurity, 
+                        competitive intelligence, and large-scale data analysis.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://github.com/zararzln/Norwegian-banking-app-security-analyzer" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                        <a href="#" class="project-link secondary">
+                            <i class="fas fa-shield-alt"></i> Security Report
+                        </a>
+                    </div>
+                    <div class="project-card">
+                        <h3 class="project-title">🎓 StudyBuddy: AI-Powered Study Partner Matching</h3>
+                        <p class="project-description">
+                            Built an intelligent study partner matching platform using advanced machine learning algorithms to connect learners with a student to study with. 
+                            Implemented hybrid recommendation system combining collaborative filtering, NLP, and compatibility scoring to achieve user satisfaction.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/zararzln/studybuddy" class="project-link">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                            <a href="#" class="project-link secondary">
+                                <i class="fas fa-users"></i> Live Platform
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <h2>Technical Arsenal</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming & Data</h3>
+                    <ul class="skill-list">
+                        <li>Python (Advanced)</li>
+                        <li>SQL (PostgreSQL, MySQL)</li>
+                        <li>Pandas & NumPy</li>
+                        <li>Data Analysis & Visualization</li>
+                        <li>Statistical Modeling</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Machine Learning</h3>
+                    <ul class="skill-list">
+                        <li>Scikit-learn</li>
+                        <li>PyTorch & TensorFlow</li>
+                        <li>Deep Learning</li>
+                        <li>Random Forest & XGBoost</li>
+                        <li>Feature Engineering</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Tools & Technologies</h3>
+                    <ul class="skill-list">
+                        <li>Jupyter & Google Colab</li>
+                        <li>Git & GitHub</li>
+                        <li>API Development</li>
+                        <li>Data Visualization (Matplotlib, Seaborn)</li>
+                        <li>Hardware Diagnostics</li>
+                    </ul>
+                </div>
+                
+                <!-- SUPER FUN Languages Section -->
+<div class="languages-showcase">
+    <h3 style="text-align: center; font-size: 2rem; margin-bottom: 40px; background: linear-gradient(135deg, #6b5b42, #8b7355); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">I Speak The World </h3>
+    
+    <div class="languages-globe">
+        <div class="language-bubble native" data-level="Native">
+            <div class="flag">🇲🇾</div>
+            <div class="lang-name">Malay</div>
+            <div class="proficiency-ring">
+                <div class="ring-fill" style="--fill: 100%"></div>
+            </div>
+        </div>
+        
+        <div class="language-bubble fluent" data-level="Fluent">
+            <div class="flag">🇬🇧</div>
+            <div class="lang-name">English</div>
+            <div class="proficiency-ring">
+                <div class="ring-fill" style="--fill: 95%"></div>
+            </div>
+        </div>
+        
+        <div class="language-bubble fluent" data-level="Fluent">
+            <div class="flag">🇮🇩</div>
+            <div class="lang-name">Indonesian</div>
+            <div class="proficiency-ring">
+                <div class="ring-fill" style="--fill: 90%"></div>
+            </div>
+        </div>
+        
+        <div class="language-bubble intermediate" data-level="Intermediate">
+            <div class="flag">🇳🇴</div>
+            <div class="lang-name">Norwegian</div>
+            <div class="proficiency-ring">
+                <div class="ring-fill" style="--fill: 65%"></div>
+            </div>
+        </div>
+        
+        <div class="language-bubble basic" data-level="Basic">
+            <div class="flag">🇪🇸</div>
+            <div class="lang-name">Spanish</div>
+            <div class="proficiency-ring">
+                <div class="ring-fill" style="--fill: 30%"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="language-stats">
+        <div class="stat-item">
+            <span class="stat-number">5</span>
+            <span class="stat-label">Languages</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">3</span>
+            <span class="stat-label">Fluent</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">4</span>
+            <span class="stat-label">Continents</span>
+        </div>
+    </div>
+</div>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>Built with passion by Zara Razlan | © 2025</p>
+    </footer>
+</body>
+</html>
